@@ -58,7 +58,7 @@
 // @ts-nocheck
 definePageMeta({
   layout: false,
-  middleware:'auth'
+  // middleware:'auth'
 })
 
 const config = useRuntimeConfig()
