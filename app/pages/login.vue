@@ -1,31 +1,66 @@
 <template>
-  <div>
-    <v-container class="fill-height d-flex align-center justify-center">
- <v-card width="400" class="pa-6 rounded-xl">
- <v-card-title class="text-center text-h5">
- Login
- </v-card-title>
- <v-card-text>
- <v-btn
- block
- color="primary"
- size="large"
- prepend-icon="mdi-google"
- @click="loginWithGoogle"
+  <div 
+    class="mx-auto d-flex align-center justify-center" 
+    style="height: 90vh;">
 
- 
- >
- Sign in with Google
- </v-btn>
- </v-card-text>
- </v-card>
- </v-container>
+      <v-card 
+        width="500" 
+        class="py-8" 
+        rounded="xl" 
+        elevation="8">
+          <v-card-text  
+            class="text-center">
+              <v-icon 
+                size="100" 
+                color="primary">
+                mdi-account
+                  </v-icon>
+                    <h3>Welcome back, please login</h3>
+                      <v-form class="px-8">
+
+                        <v-text-field 
+                        prepend-inner-icon="mdi-account" 
+                        variant="solo-filled" 
+                        flat label="Username" 
+                        rounded>
+                        </v-text-field>
+
+                        <v-text-field 
+                        prepend-inner-icon="mdi-lock" 
+                        variant="solo-filled" 
+                        flat label="Password" 
+                        type="123" 
+                        rounded>
+                        </v-text-field>
+
+                        <v-btn 
+                        color="primary" 
+                        class="mt-3" 
+                        rounded block
+                        > Login
+                        </v-btn>
+                          
+                          <v-divider class="my-8">OR</v-divider>
+
+                        <v-btn 
+                        prepend-icon="mdi-google" 
+                        variant="flat" 
+                        color="red" 
+                        rounded block 
+                        @click="loginWithGoogle">sign in with google 
+                        </v-btn>
+        </v-form>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
-
-<script lang="ts" setup>
-
+<script setup lang="ts">
 // @ts-nocheck
+definePageMeta({
+  layout: false,
+  middleware:'auth'
+})
+
 const config = useRuntimeConfig()
 declare global {
  interface Window {
@@ -58,11 +93,4 @@ const loginWithGoogle = () => {
  })
  client.requestAccessToken()
 }
-
-
-
 </script>
-
-<style>
-
-</style>
